@@ -1,4 +1,4 @@
-import discord, random
+import discord, random, re
 
 class MyClient(discord.Client):
     # This reports that the bot logged in from your console
@@ -26,13 +26,16 @@ class MyClient(discord.Client):
                 await message.channel.send("Garbage Day!\nhttps://www.youtube.com/watch?v=i7gIpuIVE3k")
             # lists the commands for the bot
             if "!commands" in message.content:
-                await message.channel.send("I can respond to the following:\n\n!lunchbox\n\n!avatar @username#### - To post the users avatar\n\n!singsong - To link a random youtube song.\n\n!garbageday - You'll find out\n\n!commands - This message.")
+                await message.channel.send("I can respond to the following:\n\n!lunchbox\n\n!avatar @username#### - To post the users avatar\n\n!singsong - To link a random youtube song.\n\n!source - Links the git page\n\n!garbageday - You'll find out\n\n!commands - This message.")
             # Responds to a post of lol
             if message.content == "lol":
                 await message.channel.send("Don't say that junk here you fool!")
             # Reminds someone of their favorite book series!
             if message.content == "!lunchbox":
                 await message.channel.send("lunchbox loves discworld bruh!")
+            # This links the Source code on github
+            if message.content == "!source":
+                await message.channel.send("Source Code:\nhttps://github.com/layonthehorn/Discordbot.py/blob/master/Spammerbot.py")
 
 
 client = MyClient()
