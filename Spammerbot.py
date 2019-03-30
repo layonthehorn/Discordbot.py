@@ -1,9 +1,12 @@
 import discord, random, re
 
+
 class MyClient(discord.Client):
+
     # This reports that the bot logged in from your console
     async def on_ready(self):
         print('Logged on as', self.user)
+        await client.change_presence(activity=discord.Game(name='Cute Cat Videos!'))
 
     async def on_message(self, message):
         # don't respond to ourselves
@@ -33,9 +36,17 @@ class MyClient(discord.Client):
             # Reminds someone of their favorite book series!
             if message.content == "!lunchbox":
                 await message.channel.send("lunchbox loves discworld bruh!")
-            # This links the Source code on github
+            # Links the github page of this project
             if message.content == "!source":
                 await message.channel.send("Source Code:\nhttps://github.com/layonthehorn/Discordbot.py/blob/master/Spammerbot.py")
+            # States who created the bot... Me by the way
+            if message.content == "!credits":
+                await message.channel.send("This bot was made by @layonthehorn. Who is very cool, and attractive by the way.")
+
+            #if message.content == "!music":
+            #    voice = await Client.join_voice_channel(channel)
+            #    player = await voice.create_ytdl_player('https://www.youtube.com/watch?v=WJQvqjxwWQw&list=FLY5xmikeJ50GVVgVDwNoEEA&index=23&t=0s')
+            #    player.start()
 
 
 client = MyClient()
