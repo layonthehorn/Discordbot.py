@@ -1,3 +1,4 @@
+
 import discord, random, re
 
 
@@ -16,6 +17,8 @@ class MyClient(discord.Client):
         else:
             # Always posts a Goblin emote to each message that is posted
             await message.add_reaction("👺")
+            print(message.author.name)
+            print(message.author.id)
             # Will post the avatar of who ever is posted in the comments
             if "!avatar" in message.content and message.mentions.__len__()>0:
                 for user in message.mentions:
@@ -42,11 +45,14 @@ class MyClient(discord.Client):
             # States who created the bot... Me by the way
             if message.content == "!credits":
                 await message.channel.send("This bot was made by @layonthehorn. Who is very cool, and attractive by the way.")
-
-            #if message.content == "!music":
-            #    voice = await Client.join_voice_channel(channel)
-            #    player = await voice.create_ytdl_player('https://www.youtube.com/watch?v=WJQvqjxwWQw&list=FLY5xmikeJ50GVVgVDwNoEEA&index=23&t=0s')
-            #    player.start()
+            if "!ree" in message.content:
+                messagetosend = message.author.name
+                await message.channel.send("{0} demands blood! reerberbebrbrbrebebrebr braebrebare arebbabebrebraabberbr ebrerbebrberberbrbbrrbbrbrbrrbrbrbrbrbbbbbbrbrbrbrebrbbrebrbrebarr riparooni".format(messagetosend),tts=True)
+                #await message.channel.send("Damn spammers!")
+            if "!song" in message.content:
+                listchan = discord.Client.get_all_channels(self)
+                for i in listchan:
+                    print(i)
 
 
 client = MyClient()
