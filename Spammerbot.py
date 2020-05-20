@@ -1,6 +1,4 @@
-
 import discord, random, re
-
 
 class MyClient(discord.Client):
 
@@ -15,10 +13,12 @@ class MyClient(discord.Client):
             return
 
         else:
-            # Always posts a Goblin emote to each message that is posted
-            await message.add_reaction("👺")
-            print(message.author.name)
-            print(message.author.id)
+
+
+
+            await message.add_reaction("<:vernhappy:615357722870939709>")
+            #print(message.author.name)
+            #print(message.author.id)
             # Will post the avatar of who ever is posted in the comments
             if "!avatar" in message.content and message.mentions.__len__()>0:
                 for user in message.mentions:
@@ -32,9 +32,9 @@ class MyClient(discord.Client):
                 await message.channel.send("Garbage Day!\nhttps://www.youtube.com/watch?v=i7gIpuIVE3k")
             # lists the commands for the bot
             if "!commands" in message.content:
-                await message.channel.send("I can respond to the following:\n\n!lunchbox\n\n!avatar @username#### - To post the users avatar\n\n!singsong - To link a random youtube song.\n\n!source - Links the git page\n\n!garbageday - You'll find out\n\n!commands - This message.")
+                await message.channel.send("I can respond to the following:\n\n!credits - Prints credits\n\n!cute - cats please\n\n!lunchbox\n\n!avatar @username#### - To post the users avatar\n\n!singsong - To link a random youtube song.\n\n!source - Links the git page\n\n!garbageday - You'll find out\n\n!commands - This message.")
             # Responds to a post of lol
-            if message.content == "lol":
+            if (re.search(r"(?i)\blol\b",message.content)):
                 await message.channel.send("Don't say that junk here you fool!")
             # Reminds someone of their favorite book series!
             if message.content == "!lunchbox":
@@ -45,9 +45,9 @@ class MyClient(discord.Client):
             # States who created the bot... Me by the way
             if message.content == "!credits":
                 await message.channel.send("This bot was made by @layonthehorn. Who is very cool, and attractive by the way.")
-            if "!ree" in message.content:
+            if "!cute" in message.content:
                 messagetosend = message.author.name
-                await message.channel.send("{0} demands blood! reerberbebrbrbrebebrebr braebrebare arebbabebrebraabberbr ebrerbebrberberbrbbrrbbrbrbrrbrbrbrbrbbbbbbrbrbrbrebrbbrebrbrebarr riparooni".format(messagetosend),tts=True)
+                await message.channel.send("{0} Loves cats!".format(messagetosend),tts=True)
                 #await message.channel.send("Damn spammers!")
             if "!song" in message.content:
                 listchan = discord.Client.get_all_channels(self)
@@ -56,4 +56,5 @@ class MyClient(discord.Client):
 
 
 client = MyClient()
-client.run('token')
+client.run('TokenHere')
+
